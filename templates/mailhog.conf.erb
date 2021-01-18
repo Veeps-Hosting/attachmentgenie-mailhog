@@ -1,0 +1,102 @@
+############################
+#
+# Managed by Puppet
+#
+############################
+
+
+# Defaults for mailhog initscript
+# sourced by /etc/init.d/mailhog
+# installed at /etc/default/mailhog by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Defaults values to MailHog
+#  -api-bind-addr="0.0.0.0:8025": HTTP bind interface and port for API, e.g. 0.0.0.0:8025 or just :8025
+MH_API_BIND_ADDR="<%= @api_bind_ip %>:<%= @api_bind_port %>"
+
+#  -api-host="": API URL for MailHog UI to connect to, e.g. http://some.host:1234
+#MH_API_HOST="<%= @api_bind_host %>"
+
+#  -cors-origin="": CORS Access-Control-Allow-Origin header for API endpoints
+MH_CORS_ORIGIN="<%= @cors_origin %>"
+
+#  -hostname="mailhog.example": Hostname for EHLO/HELO response, e.g. mailhog.example
+MH_HOSTNAME="<%= @hostname %>"
+
+#  -invite-jim=false: Decide whether to invite Jim (beware, he causes trouble)
+#MH_INVITE_JIM="<%= @invite_jim %>"
+
+#  -jim-accept=0.99: Chance of accept
+#MH_JIM_ACCEPT="<%= @jim_accept %>"
+
+#  -jim-disconnect=0.005: Chance of disconnect
+#MH_JIM_DISCONNECT="<%= @jim_disconnect %>"
+
+#  -jim-linkspeed-affect=0.1: Chance of affecting link speed
+#MH_JIM_LINKSPEED_AFFECT="<%= @jim_linkspeed_affect %>"
+
+#  -jim-linkspeed-max=10240: Maximum link speed (in bytes per second)
+#MH_JIM_LINKSPEED_MAX="<%= @jim_linkspeed_max %>"
+
+#  -jim-linkspeed-min=1024: Minimum link speed (in bytes per second)
+#MH_JIM_LINKSPEED_MIN="<%= @jim_linkspeed_min %>"
+
+#  -jim-reject-auth=0.05: Chance of rejecting authentication (AUTH)
+#MH_JIM_REJECT_AUTH="<%= @jim_reject_auth %>"
+
+#  -jim-reject-recipient=0.05: Chance of rejecting a recipient (RCPT TO)
+#MH_JIM_REJECT_RECIPIENT="<%= @jim_reject_recipient %>"
+
+#  -jim-reject-sender=0.05: Chance of rejecting a sender (MAIL FROM)
+#MH_JIM_REJECT_SENDER="<%= @jim_reject_sender %>"
+
+#  -mongo-coll="messages": MongoDB collection, e.g. messages
+MH_MONGO_COLLECTION="<%= @mongo_coll %>"
+
+#  -mongo-db="mailhog": MongoDB database, e.g. mailhog
+MH_MONGO_DB="<%= @mongo_db %>"
+
+#  -mongo-uri="127.0.0.1:27017": MongoDB URI, e.g. 127.0.0.1:27017
+MH_MONGO_URI="<%= @mongo_uri_ip %>:<%= @mongo_uri_port %>"
+
+#  -outgoing-smtp="": JSON file containing outgoing SMTP servers
+MH_OUTGOING_SMTP="<%= @outgoing_smtp %>"
+
+#  -smtp-bind-addr="0.0.0.0:1025": SMTP bind interface and port, e.g. 0.0.0.0:1025 or just :1025
+MH_SMTP_BIND_ADDR="<%= @smtp_bind_addr_ip %>:<%= @smtp_bind_addr_port %>"
+
+#  -storage="memory": Message storage: memory (default) or mongodb
+MH_STORAGE="<%= @storage %>"
+
+#  -ui-bind-addr="0.0.0.0:8025": HTTP bind interface and port for UI, e.g. 0.0.0.0:8025 or just :8025
+MH_UI_BIND_ADDR="<%= @ui_bind_addr_ip %>:<%= @ui_bind_addr_port %>"
+
+#  -ui-web-path="/mailhog": changes the UI listened to for requests, used behind a reverse proxy
+MH_UI_WEB_PATH="<%= @ui_web_path %>"
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS="-api-bind-addr=$MH_API_BIND_ADDR \
+             -api-host=$MH_API_HOST \
+             -cors-origin=$MH_CORS_ORIGIN \
+             -hostname=$MH_HOSTNAME \
+             -invite-jim=$MH_INVITE_JIM \
+             -jim-accept=$MH_JIM_ACCEPT \
+             -jim-disconnect=$MH_JIM_DISCONNECT \
+             -jim-linkspeed-affect=$MH_JIM_LINKSPEED_AFFECT \
+             -jim-linkspeed-max=$MH_JIM_LINKSPEED_MAX \
+             -jim-linkspeed-min=$MH_JIM_LINKSPEED_MIN \
+             -jim-reject-auth=$MH_JIM_REJECT_AUTH \
+             -jim-reject-recipient=$MH_JIM_REJECT_RECIPIENT \
+             -jim-reject-sender=$MH_JIM_REJECT_SENDER \
+             -mongo-coll=$MH_MONGO_COLLECTION \
+             -mongo-db=$MH_MONGO_DB \
+             -mongo-uri=$MH_MONGO_URI \
+             -outgoing-smtp=$MH_OUTGOING_SMTP \
+             -smtp-bind-addr=$MH_SMTP_BIND_ADDR \
+             -storage=$MH_STORAGE \
+             -ui-bind-addr=$MH_UI_BIND_ADDR \
+             -ui-web-path=$MH_UI_WEB_PATH \
+            "

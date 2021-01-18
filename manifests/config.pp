@@ -1,16 +1,16 @@
-# Class to configure mailhog.
+# == Class mailhog::config
 #
-# @api private
-class mailhog::config {
-  file { 'mailhog-config':
-    path    => $::mailhog::config_file,
-    content => template('mailhog/mailhog-config.erb'),
+# This class is called from mailhog to deploy the mailhog config.
+#
+
+class mailhog::config inherits mailhog {
+
+  file { $mailhog::config:
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
     mode    => '0644',
+    content => template($mailhog::config_template),
   }
 
-  if $::mailhog::manage_service {
-    File['mailhog-config'] {
-      notify  => Service['mailhog'],
-    }
-  }
 }

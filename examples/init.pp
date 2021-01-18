@@ -9,7 +9,4 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
-class { '::mailhog':
-  install_method => 'archive',
-  archive_source => 'https://github.com/mailhog/MailHog/releases/download/v1.0.1/MailHog_linux_amd64',
-}
+include ::mailhog

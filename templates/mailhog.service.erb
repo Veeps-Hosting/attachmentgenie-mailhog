@@ -1,9 +1,12 @@
 [Unit]
-Description=<%= scope['mailhog::service_name'] %>
-After=network.target
+Description=MailHog Service
+After=syslog.target network.service
 
 [Service]
+EnvironmentFile=<%= scope['mailhog::config'] %>
 Type=simple
-EnvironmentFile=<%= scope['mailhog::config_file'] %>
-ExecStart=<%= scope['mailhog::install_dir'] %>/mailhog $MAILHOG_OPTS > /dev/null 2>&1
-ExecStop=<%= scope['mailhog::install_dir'] %>/mailhog > /dev/null 2>&1
+ExecStart=<%= scope['mailhog::binary_file'] %>
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

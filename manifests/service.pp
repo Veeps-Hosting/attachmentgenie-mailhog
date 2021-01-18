@@ -1,45 +1,28 @@
-# Class to manage the mailhog service.
+# == Class mailhog::service
 #
-# @api private
-class mailhog::service {
-  if $::mailhog::manage_service {
-    case $::mailhog::service_provider {
-      'debian','init','redhat': {
-        file { 'mailhog service file':
-          path    => "/etc/init.d/${::mailhog::service_name}",
-          content => template("mailhog/mailhog.init.${::osfamily}.erb"),
-          mode    => '0755',
-          notify  => Service['mailhog'],
-        }
-      }
-      'systemd': {
-        ::systemd::unit_file { "${::mailhog::service_name}.service":
-          content => template('mailhog/mailhog.service.erb'),
-          before  => Service['mailhog'],
-        }
-      }
-      default: {
-        fail("Service provider ${::mailhog::service_provider} not supported")
-      }
-    }
+# This class is meant to be called from mailhog.
+# It ensures the service is being deployed and is up & running.
+#
 
-    case $::mailhog::install_method {
-      'package': {
-        Service['mailhog'] {
-          subscribe => Package['mailhog'],
-        }
-      }
-      'archive': {}
-      default: {
-        fail("Installation method ${::mailhog::install_method} not supported")
-      }
-    }
+class mailhog::service inherits mailhog {
 
-    service { 'mailhog':
-      ensure   => running,
-      enable   => true,
-      name     => $::mailhog::service_name,
-      provider => $::mailhog::service_provider,
+  if ! ($mailhog::service_ensure in [ 'running', 'stopped' ]) {
+    fail('service_ensure parameter must be running or stopped')
+  }
+
+  if $mailhog::service_manage == true {
+    service { $mailhog::service_name:
+      ensure     => $mailhog::service_ensure,
+      enable     => $mailhog::service_enable,
+      name       => $mailhog::service_name,
+      hasstatus  => true,
+      hasrestart => true,
+      require    => [
+        File[$mailhog::binary_file],
+        File[$mailhog::config],
+      ],
+      subscribe  => File[$mailhog::config],
     }
   }
+
 }
