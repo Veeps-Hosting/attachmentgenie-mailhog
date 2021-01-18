@@ -1,11 +1,4 @@
-# attachmentgenie-mailhog
-
-[![](https://img.shields.io/puppetforge/pdk-version/attachmentgenie/mailhog.svg?style=popout)](https://forge.puppetlabs.com/attachmentgenie/mailhog)
-[![](https://img.shields.io/puppetforge/v/attachmentgenie/mailhog.svg?style=popout)](https://forge.puppetlabs.com/attachmentgenie/mailhog)
-[![](https://img.shields.io/puppetforge/dt/attachmentgenie/mailhog.svg?style=popout)](https://forge.puppetlabs.com/attachmentgenie/mailhog)
-[![](https://travis-ci.org/attachmentgenie/attachmentgenie-mailhog.svg?branch=master)](https://travis-ci.org/attachmentgenie/attachmentgenie-mailhog)
-[![License](https://img.shields.io/github/license/attachmentgenie/attachmentgenie-mailhog?stype=popout)](https://github.com/attachmentgenie/attachmentgenie-mailhog/blob/master/LICENSE)
-
+# puppet-mailhog
 Deploy and configure mailhog on a node.
 
 - [Description](#description)

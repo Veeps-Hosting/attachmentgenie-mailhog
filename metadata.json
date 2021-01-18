@@ -1,12 +1,12 @@
 {
   "name": "ftaeger-mailhog",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "ftaeger, Grant Davies",
   "summary": "Install & Configure MailHog",
   "license": "Apache-2.0",
-  "source": "https://github.com/Veeps-Hosting/attachmentgenie-mailhog",
-  "project_page": "https://github.com/Veeps-Hosting/attachmentgenie-mailhog",
-  "issues_url": "https://github.com/Veeps-Hosting/attachmentgenie-mailhog",
+  "source": "https://github.com/Veeps-Hosting/puppet-mailhog",
+  "project_page": "https://github.com/Veeps-Hosting/puppet-mailhog",
+  "issues_url": "https://github.com/Veeps-Hosting/puppet-mailhog",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
