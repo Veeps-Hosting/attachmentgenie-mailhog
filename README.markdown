@@ -146,6 +146,6 @@ Feel free to pull the repository and commit changes. I will review them asap and
 
 ###Contributors
 
-To see who's already involved, see the [list of contributors.](https://github.com/ftaeger/ftaeger-mailhog/graphs/contributors)
+To see who's already involved, see the [list of contributors.]
 
 
