@@ -39,7 +39,7 @@ class mailhog::install inherits mailhog {
     file { $mailhog::binary_file:
       ensure  => link,
       target  => "$mailhog::homedir/mailhog-$mailhog::mailhog_version",
-      require => File[$mailhog::homedir/mailhog-$mailhog::mailhog_version],
+      require => File["$mailhog::homedir/mailhog-$mailhog::mailhog_version"],
     }
 
     if ! defined(Package['curl']) {

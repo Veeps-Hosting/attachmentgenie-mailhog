@@ -1,3 +1,1 @@
-# 2.0.0
-
-    - moving to puppet4/5 syntax
+# 1.1.5 bugfix version
