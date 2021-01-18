@@ -25,7 +25,7 @@ class mailhog::install inherits mailhog {
 
     exec { "Download MailHog $mailhog::mailhog_version":
       command => "/usr/bin/curl -o $mailhog::homedir/mailhog-$mailhog::mailhog_version -L $mailhog::download_url",
-      require => [ Package['curl'], File[ "$mailhog::homedir" ] ],
+      require => [Package['curl'], File[$mailhog::homedir]],
       creates => "$mailhog::homedir/mailhog-$mailhog::mailhog_version",
     }
 
@@ -33,13 +33,13 @@ class mailhog::install inherits mailhog {
       ensure  => present,
       mode    => '0755',
       require => Exec["Download MailHog $mailhog::mailhog_version"],
-      notify  => File["$mailhog::binary_file"],
+      notify  => File[$mailhog::binary_file],
     }
 
-    file { "$mailhog::binary_file":
+    file { $mailhog::binary_file:
       ensure  => link,
       target  => "$mailhog::homedir/mailhog-$mailhog::mailhog_version",
-      require => File[ "$mailhog::homedir/mailhog-$mailhog::mailhog_version" ],
+      require => File[$mailhog::homedir/mailhog-$mailhog::mailhog_version],
     }
 
     if ! defined(Package['curl']) {
@@ -58,10 +58,10 @@ class mailhog::install inherits mailhog {
       owner  => 'root',
       group  => 'root',
       source => $mailhog::source_file,
-      notify => File["$mailhog::binary_file"],
+      notify => File[$mailhog::binary_file],
     }
 
-    file { "$mailhog::binary_file":
+    file { $mailhog::binary_file:
       ensure  => link,
       target  => "$mailhog::homedir/mailhog-$mailhog::mailhog_version",
       require => File["$mailhog::homedir/mailhog-$mailhog::mailhog_version"],
