@@ -79,7 +79,7 @@ class mailhog::install inherits mailhog {
   }
 
   # Deploy mhsendmail
-  file { ['/usr/local/bin/mhsendmail','/usr/sbin/sendmail']:
+  file { ['/usr/local/bin/mhsendmail']:
     ensure  => file,
     source  => 'puppet:///modules/mailhog/mhsendmail',
     owner   => 'root',
